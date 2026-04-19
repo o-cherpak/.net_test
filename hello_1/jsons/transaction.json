@@ -1,0 +1,26 @@
+[
+  {
+    "Type": "Success",
+    "SendTime": "2026-04-19T23:42:50.1483773+02:00",
+    "Amount": 100,
+    "AccountToId": "71eb4e7a-66f1-4883-81c3-e6fedc3726ce",
+    "AccountFromId": "63c495d1-139b-4ed0-8727-fa332799eaf8",
+    "Id": "fda55418-80d7-481e-af0c-36e900cb5739"
+  },
+  {
+    "Type": "Success",
+    "SendTime": "2026-04-19T23:42:50.1522614+02:00",
+    "Amount": 100,
+    "AccountToId": "9f344ba9-e8bc-43c0-a762-93213d133c03",
+    "AccountFromId": "66cb003a-14aa-4a87-932e-661d68d19fd9",
+    "Id": "04bbd100-cc7e-4a9e-9bc9-76eb50cf8123"
+  },
+  {
+    "Type": "Success",
+    "SendTime": "2026-04-19T23:42:50.1552257+02:00",
+    "Amount": 100,
+    "AccountToId": "60fbd572-40c9-4074-95ee-b917f320ffb0",
+    "AccountFromId": "5004e3a8-0018-4378-b970-dbf81f55bbd4",
+    "Id": "8a647736-c30a-4ad6-8a8a-b3202d502d8c"
+  }
+]

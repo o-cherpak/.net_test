@@ -3,17 +3,17 @@
 public class Transaction
 {
     private Guid _id;
-    private AccountBase _accountFrom;
-    private AccountBase _accountTo;
+    private Guid _accountFromId;
+    private Guid _accountToId;
     private decimal _amount;
     private DateTime _sendTime;
     private TransactionType _type;
     
 
-    public Transaction(AccountBase accountFrom, AccountBase accountTo, decimal amount, TransactionType type)
+    public Transaction(Guid accountFromId, Guid accountToId, decimal amount, TransactionType type)
     {
-        _accountFrom = accountFrom;
-        _accountTo = accountTo;
+        _accountFromId = accountFromId;
+        _accountToId = accountToId;
         _amount = amount;
         _id = Guid.NewGuid();
         _sendTime = DateTime.Now;
@@ -26,9 +26,9 @@ public class Transaction
 
     public decimal Amount => _amount;
 
-    public AccountBase AccountTo => _accountTo;
+    public Guid AccountToId => _accountToId;
 
-    public AccountBase AccountFrom => _accountFrom;
+    public Guid AccountFromId => _accountFromId;
 
     public Guid Id => _id;
 }

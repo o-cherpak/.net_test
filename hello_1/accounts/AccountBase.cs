@@ -19,4 +19,9 @@ public abstract class AccountBase
     }
     public abstract void Withdraw(decimal amount);
     public abstract void GetInfo();
+
+    public Guid GetId()
+    {
+        return Id;
+    }
 }

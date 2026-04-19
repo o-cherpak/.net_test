@@ -1,12 +1,15 @@
-﻿using hello_1.exception;
+﻿using System.Text.Json;
+using hello_1.exception;
+using hello_1.services;
 
 namespace hello_1;
 
 public class Bank
 {
     private List<Customer> Customers = new List<Customer>();
-    private List<Transaction> _transactionsHistory { get; set; } = new List<Transaction>();
 
+
+    private List<Transaction> _transactionsHistory { get; set; } = new List<Transaction>();
 
     public IReadOnlyList<Customer> GetCustomers()
     {
@@ -43,7 +46,8 @@ public class Bank
 
         if (errorMessenge is not null)
         {
-            Transaction transaction = new Transaction(accountFrom, accountTo, amount, TransactionType.Failed);
+            Transaction transaction =
+                new Transaction(accountFrom.GetId(), accountTo.GetId(), amount, TransactionType.Failed);
             _transactionsHistory.Add(transaction);
             Console.WriteLine(errorMessenge);
 
@@ -63,14 +67,16 @@ public class Bank
         if (errorMessenge is null)
         {
             Transaction transaction =
-                new Transaction(accountFrom, accountTo, amount, TransactionType.Success);
+                new Transaction(accountFrom.GetId()
+                    , accountTo.GetId(), amount, TransactionType.Success);
             _transactionsHistory.Add(transaction);
             Console.WriteLine("Transaction Success");
         }
         else
         {
             Transaction transaction =
-                new Transaction(accountFrom, accountTo, amount, TransactionType.Failed);
+                new Transaction(accountFrom.GetId()
+                    , accountTo.GetId(), amount, TransactionType.Failed);
             _transactionsHistory.Add(transaction);
             Console.WriteLine(errorMessenge);
         }
@@ -92,5 +98,27 @@ public class Bank
         query = _transactionsHistory.TakeLast(count).ToList();
 
         return query;
+    }
+
+    public async Task SaveTransactions()
+    {
+        TransactionsSerializer ts = new TransactionsSerializer();
+
+        var json = JsonSerializer.Serialize(_transactionsHistory, ts.option);
+
+        await File.WriteAllTextAsync(ts.pathToSave, json);
+    }
+
+    public async Task LoadTransactions()
+    {
+        TransactionsSerializer ts = new TransactionsSerializer();
+
+        if (!File.Exists(ts.pathToSave))
+        {
+            return;
+        }
+
+        var json = await File.ReadAllTextAsync(ts.pathToSave);
+        _transactionsHistory = JsonSerializer.Deserialize<List<Transaction>>(json, ts.option);
     }
 }
