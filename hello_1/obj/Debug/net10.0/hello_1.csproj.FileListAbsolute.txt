@@ -1,0 +1,14 @@
+C:\Users\sasha\RiderProjects\hello_1\hello_1\bin\Debug\net10.0\hello_1.exe
+C:\Users\sasha\RiderProjects\hello_1\hello_1\bin\Debug\net10.0\hello_1.deps.json
+C:\Users\sasha\RiderProjects\hello_1\hello_1\bin\Debug\net10.0\hello_1.runtimeconfig.json
+C:\Users\sasha\RiderProjects\hello_1\hello_1\bin\Debug\net10.0\hello_1.dll
+C:\Users\sasha\RiderProjects\hello_1\hello_1\bin\Debug\net10.0\hello_1.pdb
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.AssemblyInfoInputs.cache
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.AssemblyInfo.cs
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.csproj.CoreCompileInputs.cache
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.dll
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\refint\hello_1.dll
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.pdb
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.genruntimeconfig.cache
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\ref\hello_1.dll
