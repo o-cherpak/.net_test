@@ -17,7 +17,6 @@ public abstract class AccountBase
     {
         Balance += amount;
     }
-    
     public abstract void Withdraw(decimal amount);
     public abstract void GetInfo();
 }

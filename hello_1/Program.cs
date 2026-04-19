@@ -12,4 +12,9 @@ customer.CreateAccount(type: Customer.Account.Checking, 120);
 
 bank.Transfer(customer.Accounts[1], customer.Accounts[2], 100);
 
-customer.GetAccountsInfo();
+var lastTransaction = bank.GetLastTransactions()[0];
+
+lastTransaction.AccountFrom.GetInfo();
+lastTransaction.AccountFrom.GetInfo();
+Console.WriteLine(lastTransaction.Amount);
+Console.WriteLine(lastTransaction.SendTime);

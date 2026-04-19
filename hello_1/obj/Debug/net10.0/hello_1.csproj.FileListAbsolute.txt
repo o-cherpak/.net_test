@@ -12,3 +12,4 @@ C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\refint\hello_1.dl
 C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.pdb
 C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.genruntimeconfig.cache
 C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\ref\hello_1.dll
+C:\Users\sasha\RiderProjects\hello_1\hello_1\obj\Debug\net10.0\hello_1.sourcelink.json

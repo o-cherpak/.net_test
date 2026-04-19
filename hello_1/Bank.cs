@@ -5,6 +5,8 @@ namespace hello_1;
 public class Bank
 {
     private List<Customer> Customers = new List<Customer>();
+    private List<Transaction> _transactionsHistory { get; set; } = new List<Transaction>();
+
 
     public IReadOnlyList<Customer> GetCustomers()
     {
@@ -20,23 +22,31 @@ public class Bank
 
     public void Transfer(AccountBase accountFrom, AccountBase accountTo, decimal amount)
     {
+        String errorMessenge = null;
+
         try
         {
             accountFrom.Withdraw(amount);
         }
         catch (InsufficientFundsException ex)
         {
-            Console.WriteLine($"You don't have enough money for this operation. {ex.Message}");
-            return;
+            errorMessenge = $"You don't have enough money for this operation. {ex.Message}";
         }
         catch (WithdrawalNotAllowedException ex)
         {
-            Console.WriteLine($"Withdrawal Not Allowed Here {ex.Message}");
-            return;
+            errorMessenge = $"Withdrawal Not Allowed Here {ex.Message}";
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Unknown error: {ex.Message}");
+            errorMessenge = $"Unknown error: {ex.Message}";
+        }
+
+        if (errorMessenge is not null)
+        {
+            Transaction transaction = new Transaction(accountFrom, accountTo, amount, TransactionType.Failed);
+            _transactionsHistory.Add(transaction);
+            Console.WriteLine(errorMessenge);
+
             return;
         }
 
@@ -46,9 +56,41 @@ public class Bank
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
             accountFrom.Deposit(amount);
-            throw;
+            errorMessenge = e.Message;
         }
+
+        if (errorMessenge is null)
+        {
+            Transaction transaction =
+                new Transaction(accountFrom, accountTo, amount, TransactionType.Success);
+            _transactionsHistory.Add(transaction);
+            Console.WriteLine("Transaction Success");
+        }
+        else
+        {
+            Transaction transaction =
+                new Transaction(accountFrom, accountTo, amount, TransactionType.Failed);
+            _transactionsHistory.Add(transaction);
+            Console.WriteLine(errorMessenge);
+        }
+    }
+
+    public List<Transaction> GetLastTransactions(int count = 1, TransactionType? type = null)
+    {
+        var query = _transactionsHistory;
+
+        if (type.HasValue)
+        {
+            query = _transactionsHistory
+                .Where(tran => tran.Type == type)
+                .TakeLast(count).ToList();
+
+            return query;
+        }
+
+        query = _transactionsHistory.TakeLast(count).ToList();
+
+        return query;
     }
 }
