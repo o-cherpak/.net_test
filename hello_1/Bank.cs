@@ -6,21 +6,19 @@ namespace hello_1;
 
 public class Bank
 {
-    private List<Customer> Customers = new List<Customer>();
-
-
+    private List<Customer> _customers { get; set; } = new List<Customer>();
     private List<Transaction> _transactionsHistory { get; set; } = new List<Transaction>();
 
     public IReadOnlyList<Customer> GetCustomers()
     {
-        return Customers.AsReadOnly();
+        return _customers.AsReadOnly();
     }
 
     public void AddCustomer(string name)
     {
         Customer newCustomer = new Customer(name);
 
-        Customers.Add(newCustomer);
+        _customers.Add(newCustomer);
     }
 
     public void Transfer(AccountBase accountFrom, AccountBase accountTo, decimal amount)
@@ -102,23 +100,20 @@ public class Bank
 
     public async Task SaveTransactions()
     {
-        TransactionsSerializer ts = new TransactionsSerializer();
+        BankSerializer bs = new BankSerializer();
 
-        var json = JsonSerializer.Serialize(_transactionsHistory, ts.option);
+        var json = JsonSerializer.Serialize(_transactionsHistory, bs.option);
 
-        await File.WriteAllTextAsync(ts.pathToSave, json);
+        await File.WriteAllTextAsync(bs.pathToSaveTransactions, json);
     }
 
     public async Task LoadTransactions()
     {
-        TransactionsSerializer ts = new TransactionsSerializer();
+        BankSerializer bs = new BankSerializer();
 
-        if (!File.Exists(ts.pathToSave))
-        {
-            return;
-        }
+        if (!File.Exists(bs.pathToSaveTransactions)) return;
 
-        var json = await File.ReadAllTextAsync(ts.pathToSave);
-        _transactionsHistory = JsonSerializer.Deserialize<List<Transaction>>(json, ts.option);
+        var json = await File.ReadAllTextAsync(bs.pathToSaveTransactions);
+        _transactionsHistory = JsonSerializer.Deserialize<List<Transaction>>(json, bs.option);
     }
 }

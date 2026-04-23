@@ -2,7 +2,7 @@
 
 namespace hello_1.services;
 
-public class TransactionsSerializer
+public class BankSerializer
 {
     public JsonSerializerOptions option = new JsonSerializerOptions
     {
@@ -11,6 +11,5 @@ public class TransactionsSerializer
         WriteIndented = true
     };
 
-    public string pathToSave =
-        "C:\\Users\\sasha\\RiderProjects\\hello_1\\hello_1\\jsons\\transaction.json";
+    public readonly string pathToSaveTransactions = "hello_1/jsons/transaction.json";
 }

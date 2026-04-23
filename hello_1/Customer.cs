@@ -1,4 +1,6 @@
-﻿namespace hello_1;
+﻿using hello_1.accounts;
+
+namespace hello_1;
 
 public class Customer
 {
@@ -6,13 +8,6 @@ public class Customer
     {
         Id = Guid.NewGuid();
         Name = name;
-    }
-
-    public enum Account
-    {
-        Checking,
-        Deposit,
-        Saving
     }
 
     public List<AccountBase> Accounts => _accounts;
